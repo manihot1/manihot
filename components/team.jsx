@@ -1,7 +1,7 @@
 // ─── Team Carousel ────────────────────────────────────────────────────────────
 
 const teamMembers = [
-  { name: 'Ana Paula Ferreira', role: 'Biotecnologia & P&D', instagram: '#', linkedin: '#' },
+  { name: 'Gabriel Lucas', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/gabriellucasafb/', linkedin: 'https://www.linkedin.com/in/gabriellucasafb/' },
   { name: 'Bruno Alves Santos', role: 'Engenharia Agronômica', instagram: '#', linkedin: '#' },
   { name: 'Carla Mendes', role: 'Microbiologia Aplicada', instagram: '#', linkedin: '#' },
   { name: 'Diego Rocha', role: 'Entomologia & Biocontrole', instagram: '#', linkedin: '#' },
