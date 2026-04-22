@@ -1,0 +1,39 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0F2D1A;
+  font-family: var(--font, 'Space Grotesk', sans-serif);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+:root { --font: 'Space Grotesk', sans-serif; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0F2D1A; }
+::-webkit-scrollbar-thumb { background: #C9A84C44; border-radius: 3px; }
+
+/* Navbar responsiva */
+@media (max-width: 768px) {
+  .nav-desktop    { display: none !important; }
+  .nav-mobile-btn { display: block !important; }
+}
+
+/* Grid duas colunas → uma coluna no mobile */
+@media (max-width: 860px) {
+  .two-col { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
+
+/* Footer grid → empilha no mobile */
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Animação orb do hero */
+@keyframes heroOrb {
+  0%   { opacity: 0.6; transform: scale(1)    rotate(0deg); }
+  100% { opacity: 1;   transform: scale(1.08) rotate(3deg); }
+}
