@@ -1,14 +1,12 @@
 // ─── Team Carousel ────────────────────────────────────────────────────────────
 
 const teamMembers = [
-  { name: 'Gabriel Lucas', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/gabriellucasafb/', linkedin: 'https://www.linkedin.com/in/gabriellucasafb/' },
-  { name: 'Bruno Alves Santos', role: 'Engenharia Agronômica', instagram: '#', linkedin: '#' },
-  { name: 'Carla Mendes', role: 'Microbiologia Aplicada', instagram: '#', linkedin: '#' },
-  { name: 'Diego Rocha', role: 'Entomologia & Biocontrole', instagram: '#', linkedin: '#' },
-  { name: 'Eduarda Lima', role: 'Química de Produtos Naturais', instagram: '#', linkedin: '#' },
-  { name: 'Felipe Costa', role: 'Engenharia de Processos', instagram: '#', linkedin: '#' },
-  { name: 'Giovana Teles', role: 'Saúde Pública & Epidemiologia', instagram: '#', linkedin: '#' },
-  { name: 'Henrique Farias', role: 'Inovação & Negócios', instagram: '#', linkedin: '#' },
+  { name: 'Gabriel Lucas', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/gabriellucasafb/', linkedin: 'https://www.linkedin.com/in/gabriellucasafb/', photo: null },
+  { name: 'Luciano Mota ', role: 'Estudante de Agronomia', instagram: '#', linkedin: '#', photo: 'public/luciano.jpeg' },
+  { name: 'José Cleilton', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/josecleiton.jpeg' },
+  { name: 'Murilo Levi', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/murilolevi.jpeg' },
+  { name: 'Cristiano Negreiros ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/cristianonegreiros7', linkedin: '#', photo: 'public/cristiano negreiros.jpeg' },
+  { name: 'Felipe Costa', role: 'Engenharia de Processos', instagram: 'https://www.instagram.com/luciano_mota16/', linkedin: '#', photo: null },
 ];
 
 // SVG icons for social
@@ -74,8 +72,14 @@ function MemberCard({ member }) {
       e.currentTarget.style.transform = '';
     }}
     >
-      {/* Photo placeholder */}
-      <AvatarPlaceholder name={member.name} size={96} />
+      {/* Photo or placeholder */}
+      {member.photo
+        ? <img src={member.photo} alt={member.name} style={{
+            width: 96, height: 96, borderRadius: '50%', objectFit: 'cover',
+            border: `2px solid ${C.gold}44`, flexShrink: 0,
+          }} />
+        : <AvatarPlaceholder name={member.name} size={96} />
+      }
 
       {/* Name & role */}
       <div style={{ textAlign: 'center' }}>
