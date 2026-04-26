@@ -134,7 +134,7 @@ function TeamCarousel() {
   const track = [...teamMembers, ...teamMembers, ...teamMembers];
   const [paused, setPaused] = React.useState(false);
 
-  const CARD_W = 240; // card width + gap
+  const CARD_W = 220 + 20; // card width (220) + marginRight (20)
   const trackWidth = teamMembers.length * CARD_W;
 
   return (

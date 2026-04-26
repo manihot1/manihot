@@ -1,15 +1,15 @@
 // ─── Mandiocultura (light) ────────────────────────────────────────────────────
 function Mandiocultura() {
   return (
-    <section id="mandiocultura" data-screen-label="02 Mandiocultura" style={{ background: C.cream, padding: '80px clamp(24px, 6vw, 100px) 0' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <section id="mandiocultura" data-screen-label="02 Mandiocultura" style={{ background: C.cream, padding: '80px 0 0', overflow: 'hidden' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 6vw, 100px)' }}>
         <Reveal>
           <SectionLabel light>A Cultura</SectionLabel>
           <H2>Mandiocultura<br />no Brasil</H2>
           <Lead>A mandioca (<em>Manihot esculenta</em>) é uma das culturas mais resilientes do planeta — fonte de segurança alimentar, renda rural e agora plataforma para inovação biotecnológica.</Lead>
         </Reveal>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginBottom: 60 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22, marginBottom: 60, alignItems: 'stretch' }}>
           <BotCard delay={0} icon={BotIcons.leaf(C.gold, 44)} title="Importância Econômica"
             desc="O Brasil é o 2º maior produtor mundial, com faturamento anual superior a R$ 10 bilhões nos mercados de amido, farinha e fécula." />
           <BotCard delay={0.08} icon={BotIcons.root(C.green, 44)} title="Importância Social"
@@ -51,8 +51,8 @@ const manipComp = [
 
 function Manipueira() {
   return (
-    <section id="manipueira" data-screen-label="03 Manipueira" style={{ background: C.dark, padding: '0 clamp(24px, 6vw, 100px)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 0 0', position: 'relative' }}>
+    <section id="manipueira" data-screen-label="03 Manipueira" style={{ background: C.dark, padding: 0, overflow: 'hidden' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px clamp(24px, 6vw, 100px) 0', position: 'relative' }}>
         <CircuitBg opacity={0.05} />
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center', marginBottom: 72, position: 'relative' }} className="two-col">
@@ -90,10 +90,11 @@ function Manipueira() {
           </p>
         </Reveal>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18, position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18, position: 'relative', alignItems: 'stretch' }}>
           {manipComp.map((c, i) => (
             <TechCard key={c.name} icon={c.icon} title={c.name} delay={i * 0.06}
-              desc={<>{c.desc}<SolutionCalloutLight>{c.opp}</SolutionCalloutLight></>}
+              desc={c.desc}
+              solution={<SolutionCalloutLight>{c.opp}</SolutionCalloutLight>}
               accent={i % 2 === 0 ? C.teal : C.gold} />
           ))}
         </div>

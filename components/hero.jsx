@@ -83,6 +83,7 @@ function ParticleCanvas() {
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 function Navbar({ scrolled }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const navRef = React.useRef(null);
   const links = ['Mandiocultura','Manipueira','Patologias','Deficiências','Fitopragas','Aedes','Agrotóxicos','Equipe'];
   const ids   = ['mandiocultura','manipueira','patologias','deficiencias','fitopragas','aedes','agrotoxicos','equipe'];
   const scrollTo = id => {
@@ -90,8 +91,16 @@ function Navbar({ scrolled }) {
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 68, behavior: 'smooth' });
     setMenuOpen(false);
   };
+  React.useEffect(() => {
+    if (!menuOpen) return;
+    const onClickOutside = e => {
+      if (navRef.current && !navRef.current.contains(e.target)) setMenuOpen(false);
+    };
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, [menuOpen]);
   return (
-    <nav style={{
+    <nav ref={navRef} style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
       background: scrolled ? 'rgba(15,45,26,0.96)' : 'transparent',
       backdropFilter: scrolled ? 'blur(16px)' : 'none',

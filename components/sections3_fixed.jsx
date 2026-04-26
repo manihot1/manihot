@@ -8,36 +8,37 @@ const pragas = [
 
 function Fitopragas() {
   return (
-    <section id="fitopragas" data-screen-label="06 Fitopragas" style={{ background: C.cream, padding: '0 clamp(24px, 6vw, 100px)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 0 0' }}>
+    <section id="fitopragas" data-screen-label="06 Fitopragas" style={{ background: C.cream, padding: 0, overflow: 'hidden' }}>
+      <div style={{ maxWidth: 1500, margin: '0 auto', padding: '80px clamp(16px, 2.5vw, 48px) 0' }}>
         <Reveal>
           <SectionLabel light>Entomologia Agrícola</SectionLabel>
           <H2>Fitopragas da Mandioca</H2>
           <Lead>As principais pragas que ameaçam a produção — e as soluções biológicas que o Manihot desenvolve com base na manipueira.</Lead>
         </Reveal>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: 22 }}>
+        <div className="four-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, alignItems: 'stretch' }}>
           {pragas.map((p, i) => (
             <Reveal key={p.nome} delay={i * 0.08}>
               <div style={{
                 background: '#fff', borderRadius: 20, overflow: 'hidden',
                 border: `1px solid ${C.cream2}`, boxShadow: '0 2px 20px #1A1C1B06',
                 display: 'flex', flexDirection: 'column',
+                flex: 1, boxSizing: 'border-box',
                 transition: 'transform 0.25s, box-shadow 0.25s',
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 16px 40px #1A1C1B12'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 20px #1A1C1B06'; }}
               >
                 {/* Header */}
-                <div style={{ background: C.cream, padding: '24px 24px 20px', display: 'flex', gap: 16, alignItems: 'center', borderBottom: `1px solid ${C.cream2}` }}>
+                <div style={{ background: C.cream, padding: '18px 18px 16px', display: 'flex', gap: 12, alignItems: 'center', borderBottom: `1px solid ${C.cream2}` }}>
                   <div style={{ flexShrink: 0 }}>{p.icone}</div>
                   <div>
                     <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 17, color: C.textDark }}>{p.nome}</div>
                     <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: C.textMid, fontStyle: 'italic' }}>{p.cientifico}</div>
                   </div>
                 </div>
-                <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 14, flex: 1 }}>
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.65, margin: 0 }}>{p.dano}</p>
+                <div style={{ padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: C.textMid, lineHeight: 1.65, margin: 0, flex: 1 }}>{p.dano}</p>
                   <div style={{ background: C.cream, borderRadius: 8, padding: '8px 12px' }}>
                     <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: C.textMid }}>
                       ⏱ Fase crítica: <strong style={{ color: C.textDark }}>{p.fase}</strong>
@@ -71,14 +72,14 @@ function Aedes() {
     { fase: 'Adulto', acao: 'Repelente', cor: C.gold + 'aa', highlight: false },
   ];
   return (
-    <section id="aedes" data-screen-label="07 Aedes" style={{ background: C.dark, padding: '0 clamp(24px, 6vw, 100px)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 0 0', position: 'relative' }}>
+    <section id="aedes" data-screen-label="07 Aedes" style={{ background: C.dark, padding: 0, overflow: 'hidden' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px clamp(24px, 6vw, 100px) 0', position: 'relative' }}>
         <CircuitBg opacity={0.05} />
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center', marginBottom: 64, position: 'relative' }} className="two-col">
           <Reveal>
             <SectionLabel>Saúde Pública</SectionLabel>
-            <H2 light>Aedes aegypti<br />&amp; o Biocontrole</H2>
+            <H2 light>Aedes aegypti<br />{'&'} o Biocontrole</H2>
             <Lead light>O mesmo ácido cianídrico que torna a manipueira um passivo ambiental pode salvar vidas. Compostos bioativos isolados demonstram potente ação larvicida e ovicida contra o Aedes aegypti.</Lead>
           </Reveal>
 
@@ -171,7 +172,7 @@ function Agrotoxicos() {
             background: '#163020', borderRadius: 20, overflow: 'hidden',
             border: `1px solid ${C.gold}18`, marginBottom: 56, position: 'relative',
           }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: '#122618', padding: '16px 28px', borderBottom: `1px solid ${C.gold}18` }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: '#122618', padding: '16px 28px', borderBottom: `1px solid ${C.gold}18` }} className="three-col-table">
               <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 13, color: C.textDim, textTransform: 'uppercase', letterSpacing: 1 }}>Aspecto</div>
               <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 13, color: '#E05252' }}>❌ Agrotóxico</div>
               <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 13, color: C.gold }}>✅ Biocontrole Manihot</div>
@@ -183,6 +184,7 @@ function Agrotoxicos() {
                 borderBottom: i < comparativo.length - 1 ? `1px solid ${C.gold}0a` : 'none',
                 transition: 'background 0.2s',
               }}
+              className="three-col-table"
               onMouseEnter={e => e.currentTarget.style.background = C.gold + '08'}
               onMouseLeave={e => e.currentTarget.style.background = i % 2 === 0 ? '#12261844' : 'transparent'}
               >
@@ -224,6 +226,7 @@ function Agrotoxicos() {
                 cursor: 'pointer', boxShadow: `0 4px 28px ${C.gold}44`,
                 transition: 'transform 0.2s, box-shadow 0.2s',
               }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = `0 10px 36px ${C.gold}66`; }}
               onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = `0 4px 28px ${C.gold}44`; }}
               >Conheça o Projeto Manihot →</button>
@@ -236,30 +239,4 @@ function Agrotoxicos() {
 }
 window.Agrotoxicos = Agrotoxicos;
 
-// ─── Footer ───────────────────────────────────────────────────────────────────
-function Footer() {
-  return (
-    <footer style={{ background: '#0A1F12', padding: '60px clamp(24px, 6vw, 100px) 40px', borderTop: `1px solid ${C.gold}18` }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28, textAlign: 'center' }}>
-        <img src="uploads/pasted-1776710952173-0.png" alt="Manihot" style={{ height: 88, width: 'auto', opacity: 0.92 }} />
-        <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, color: C.textDim, maxWidth: 460, lineHeight: 1.75, margin: 0 }}>
-          Da raiz à solução — biotecnologia que preserva a vida.<br/>
-          Projeto de pesquisa aplicada em biotecnologia agrícola e saúde pública.
-        </p>
-        <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap', justifyContent: 'center' }}>
-          {['Mandiocultura','Manipueira','Patologias','Fitopragas','Aedes','Agrotóxicos'].map(l => (
-            <span key={l} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: C.textDim + '77', cursor: 'pointer', transition: 'color 0.2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = C.gold}
-            onMouseLeave={e => e.currentTarget.style.color = C.textDim + '77'}
-            >{l}</span>
-          ))}
-        </div>
-        <div style={{ width: '100%', height: 1, background: C.gold + '14' }} />
-        <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: C.textDim + '55', margin: 0 }}>
-          © 2026 Projeto Manihot · Todos os direitos reservados · Biotecnologia Sustentável
-        </p>
-      </div>
-    </footer>
-  );
-}
-window.Footer = Footer;
+// sections3.jsx — Footer component removed (defined in footer.jsx)

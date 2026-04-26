@@ -15,8 +15,8 @@ function Patologias() {
   const [tab, setTab] = React.useState('fungicas');
   const dados = patologias[tab];
   return (
-    <section id="patologias" data-screen-label="04 Patologias" style={{ background: C.cream, padding: '0 clamp(24px, 6vw, 100px)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 0 80px' }}>
+    <section id="patologias" data-screen-label="04 Patologias" style={{ background: C.cream, padding: 0, overflow: 'hidden' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px clamp(24px, 6vw, 100px) 80px' }}>
         <Reveal>
           <SectionLabel light>Fitossanidade</SectionLabel>
           <H2>Patologias da Mandioca</H2>
@@ -94,8 +94,8 @@ const nutrientes = [
 
 function Deficiencias() {
   return (
-    <section id="deficiencias" data-screen-label="05 Deficiencias" style={{ background: C.dark, padding: '0 clamp(24px, 6vw, 100px)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 0 0', position: 'relative' }}>
+    <section id="deficiencias" data-screen-label="05 Deficiencias" style={{ background: C.dark, padding: 0, overflow: 'hidden' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px clamp(24px, 6vw, 100px) 0', position: 'relative' }}>
         <LeafTexture opacity={0.06} />
         <Reveal style={{ textAlign: 'center', position: 'relative' }}>
           <SectionLabel>Nutrição</SectionLabel>
@@ -103,38 +103,42 @@ function Deficiencias() {
           <Lead light style={{ margin: '0 auto 48px', textAlign: 'center' }}>Deficiências silenciosas que comprometem a mandiocultura — e como o biocontrole Manihot pode corrigi-las.</Lead>
         </Reveal>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 18, position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18, position: 'relative', alignItems: 'stretch' }}>
           {nutrientes.map((n, i) => (
             <Reveal key={n.sym} delay={i * 0.07}>
               <div style={{
                 background: '#163020', borderRadius: 18, padding: '24px',
                 border: `1px solid ${n.cor}1a`,
-                display: 'flex', flexDirection: 'column', gap: 14,
+                display: 'flex', flexDirection: 'column',
+                flex: 1, boxSizing: 'border-box',
                 transition: 'transform 0.25s, border-color 0.25s',
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = n.cor + '44'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.borderColor = n.cor + '1a'; }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <div style={{
-                    width: 52, height: 52, borderRadius: 14, flexShrink: 0,
-                    background: n.cor + '18', border: `1.5px solid ${n.cor}44`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 20, color: n.cor,
-                  }}>{n.sym}</div>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 17, color: C.white }}>{n.nome}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                    <div style={{
+                      width: 52, height: 52, borderRadius: 14, flexShrink: 0,
+                      background: n.cor + '18', border: `1.5px solid ${n.cor}44`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 20, color: n.cor,
+                    }}>{n.sym}</div>
+                    <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 17, color: C.white }}>{n.nome}</div>
+                  </div>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: C.textDim, lineHeight: 1.65, margin: 0 }}>
+                    <strong style={{ color: C.textLight + 'cc' }}>Sintoma:</strong> {n.sintoma}
+                  </p>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: C.teal + 'cc', margin: 0 }}>
+                    Impacto: {n.impacto}
+                  </p>
                 </div>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: C.textDim, lineHeight: 1.65, margin: 0 }}>
-                  <strong style={{ color: C.textLight + 'cc' }}>Sintoma:</strong> {n.sintoma}
-                </p>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: C.teal + 'cc', margin: 0 }}>
-                  Impacto: {n.impacto}
-                </p>
                 <div style={{
                   background: n.cor + '10', border: `1px solid ${n.cor}33`,
-                  borderRadius: 10, padding: '10px 14px',
+                  borderRadius: 10, padding: '10px 14px', marginTop: 20,
                   fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: n.cor, lineHeight: 1.5,
-                }}>✦ {n.solucao}</div>
+                  display: 'flex', alignItems: 'flex-start', minHeight: 96, boxSizing: 'border-box',
+                }}><span style={{ marginRight: 8, marginTop: 1 }}>✦</span> <div>{n.solucao}</div></div>
               </div>
             </Reveal>
           ))}

@@ -72,8 +72,7 @@ function Footer() {
         <LeafTexture opacity={0.05} />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* ── Main grid ── */}
-          <div style={{
+          <div className="footer-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'minmax(220px, 1.4fr) repeat(3, minmax(140px, 1fr))',
             gap: 'clamp(32px, 4vw, 64px)',

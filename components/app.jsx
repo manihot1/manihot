@@ -68,11 +68,13 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    window.addEventListener('message', e => {
+    const onMsg = e => {
       if (e.data?.type === '__activate_edit_mode') setTweaksVisible(true);
       if (e.data?.type === '__deactivate_edit_mode') setTweaksVisible(false);
-    });
+    };
+    window.addEventListener('message', onMsg);
     window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
   }, []);
 
   // Apply tweaks globally
