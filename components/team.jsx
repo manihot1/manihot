@@ -1,12 +1,13 @@
 // ─── Team Carousel ────────────────────────────────────────────────────────────
 
 const teamMembers = [
-  { name: 'Gabriel Lucas', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/gabriellucasafb/', linkedin: 'https://www.linkedin.com/in/gabriellucasafb/', photo: null },
-  { name: 'Luciano Mota ', role: 'Estudante de Agronomia', instagram: '#', linkedin: '#', photo: 'public/luciano.jpeg' },
+  { name: 'Gabriel Lucas', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/gabriellucasafb/', linkedin: 'https://www.linkedin.com/in/gabriellucasafb/', photo: 'public/gabriel.png' },
+  { name: 'Antonio Kawan', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/kawan_dev/', linkedin: 'https://www.linkedin.com/in/antonio-kawan-freitas/', photo: 'public/kawan.jpg' },
+  { name: 'André Arraes', role: 'Desenvolvedor Full Stack', instagram: '#', linkedin: 'https://www.linkedin.com/in/andrearraes/', photo: 'public/andre.jpg' },
+  { name: 'Luciano Mota ', role: 'Estudante de Agronomia', instagram: 'https://www.instagram.com/luciano_mota16/', linkedin: '#', photo: 'public/luciano.jpeg' },
   { name: 'José Cleilton', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/josecleiton.jpeg' },
   { name: 'Murilo Levi', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/murilolevi.jpeg' },
   { name: 'Cristiano Negreiros ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/cristianonegreiros7', linkedin: '#', photo: 'public/cristiano negreiros.jpeg' },
-  { name: 'Felipe Costa', role: 'Engenharia de Processos', instagram: 'https://www.instagram.com/luciano_mota16/', linkedin: '#', photo: null },
 ];
 
 // SVG icons for social
@@ -95,30 +96,34 @@ function MemberCard({ member }) {
 
       {/* Social icons */}
       <div style={{ display: 'flex', gap: 12, marginTop: 4 }}>
-        <a href={member.instagram} target="_blank" rel="noreferrer" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          width: 34, height: 34, borderRadius: 10,
-          background: C.gold + '14', border: `1px solid ${C.gold}33`,
-          transition: 'background 0.2s, border-color 0.2s',
-          textDecoration: 'none',
-        }}
-        onMouseEnter={e => { e.currentTarget.style.background = C.gold + '28'; e.currentTarget.style.borderColor = C.gold + '77'; }}
-        onMouseLeave={e => { e.currentTarget.style.background = C.gold + '14'; e.currentTarget.style.borderColor = C.gold + '33'; }}
-        >
-          <IconInstagram size={16} color={C.gold} />
-        </a>
-        <a href={member.linkedin} target="_blank" rel="noreferrer" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          width: 34, height: 34, borderRadius: 10,
-          background: C.teal + '14', border: `1px solid ${C.teal}33`,
-          transition: 'background 0.2s, border-color 0.2s',
-          textDecoration: 'none',
-        }}
-        onMouseEnter={e => { e.currentTarget.style.background = C.teal + '28'; e.currentTarget.style.borderColor = C.teal + '77'; }}
-        onMouseLeave={e => { e.currentTarget.style.background = C.teal + '14'; e.currentTarget.style.borderColor = C.teal + '33'; }}
-        >
-          <IconLinkedin size={16} color={C.teal} />
-        </a>
+        {member.instagram && member.instagram !== '#' && (
+          <a href={member.instagram} target="_blank" rel="noreferrer" style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: 34, height: 34, borderRadius: 10,
+            background: C.gold + '14', border: `1px solid ${C.gold}33`,
+            transition: 'background 0.2s, border-color 0.2s',
+            textDecoration: 'none',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = C.gold + '28'; e.currentTarget.style.borderColor = C.gold + '77'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = C.gold + '14'; e.currentTarget.style.borderColor = C.gold + '33'; }}
+          >
+            <IconInstagram size={16} color={C.gold} />
+          </a>
+        )}
+        {member.linkedin && member.linkedin !== '#' && (
+          <a href={member.linkedin} target="_blank" rel="noreferrer" style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: 34, height: 34, borderRadius: 10,
+            background: C.teal + '14', border: `1px solid ${C.teal}33`,
+            transition: 'background 0.2s, border-color 0.2s',
+            textDecoration: 'none',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = C.teal + '28'; e.currentTarget.style.borderColor = C.teal + '77'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = C.teal + '14'; e.currentTarget.style.borderColor = C.teal + '33'; }}
+          >
+            <IconLinkedin size={16} color={C.teal} />
+          </a>
+        )}
       </div>
     </div>
   );
