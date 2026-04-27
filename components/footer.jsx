@@ -1,10 +1,5 @@
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
-const IconGithub = ({ size = 16, color = C.teal }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-  </svg>
-);
 
 const IconInstagramFooter = ({ size = 16, color = C.gold }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -57,7 +52,6 @@ function Footer() {
   const socials = [
     { label: 'Instagram', href: '#', Icon: IconInstagramFooter },
     { label: 'LinkedIn',  href: '#', Icon: IconLinkedinFooter  },
-    { label: 'GitHub',    href: '#', Icon: IconGithub          },
   ];
 
   return (
@@ -84,7 +78,7 @@ function Footer() {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, marginBottom: 20, display: 'block' }}
               >
-                <img src="uploads/pasted-1776710952173-0.png" alt="Manihot" style={{ height: 48, width: 'auto' }} />
+                <img src="public/manihot.png" alt="Manihot" style={{ height: 75, width: 'auto' }} />
               </button>
 
               <p style={{
@@ -151,12 +145,33 @@ function Footer() {
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             flexWrap: 'wrap', gap: 12,
           }}>
-            <span style={{
-              fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
-              color: C.textDim, opacity: 0.7,
-            }}>
-              © {new Date().getFullYear()} Projeto Manihot — Biotecnologia Sustentável. Todos os direitos reservados.
-            </span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <span style={{
+                fontFamily: "'Space Grotesk', sans-serif", fontSize: 13,
+                color: C.textDim, opacity: 0.7,
+              }}>
+                © {new Date().getFullYear()} Projeto Manihot — Biotecnologia Sustentável. Todos os direitos reservados.
+              </span>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: C.textDim, opacity: 0.55 }}>
+                Desenvolvido por{' '}
+                {[
+                  { nome: 'Gabriel Lucas', href: 'https://gabriellucasafb.com.br' },
+                  { nome: 'Antonio Kawan', href: 'https://www.antoniokawan.dev.br/' },
+                  { nome: 'André Arraes',  href: 'https://www.linkedin.com/in/andrearraes/' },
+                ].map((dev, i, arr) => (
+                  <React.Fragment key={dev.nome}>
+                    <a href={dev.href} target="_blank" rel="noreferrer" style={{
+                      color: C.textDim, opacity: 0.8,
+                      textDecoration: 'none', transition: 'color 0.2s, opacity 0.2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.color = C.gold; e.currentTarget.style.opacity = 1; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = C.textDim; e.currentTarget.style.opacity = 0.8; }}
+                    >{dev.nome}</a>
+                    {i < arr.length - 2 ? ', ' : i === arr.length - 2 ? ' & ' : ''}
+                  </React.Fragment>
+                ))}
+              </span>
+            </div>
             <AccentBadge color={C.teal}>Da raiz à solução</AccentBadge>
           </div>
         </div>

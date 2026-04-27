@@ -1,12 +1,9 @@
 // ─── Team Carousel ────────────────────────────────────────────────────────────
 
 const teamMembers = [
-  { name: 'Gabriel Lucas', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/gabriellucasafb/', linkedin: 'https://www.linkedin.com/in/gabriellucasafb/', photo: 'public/gabriel.png' },
-  { name: 'Antonio Kawan', role: 'Desenvolvedor Full Stack', instagram: 'https://www.instagram.com/kawan_dev/', linkedin: 'https://www.linkedin.com/in/antonio-kawan-freitas/', photo: 'public/kawan.jpg' },
-  { name: 'André Arraes', role: 'Desenvolvedor Full Stack', instagram: '#', linkedin: 'https://www.linkedin.com/in/andrearraes/', photo: 'public/andre.jpg' },
-  { name: 'Luciano Mota ', role: 'Estudante de Agronomia', instagram: 'https://www.instagram.com/luciano_mota16/', linkedin: '#', photo: 'public/luciano.jpeg' },
   { name: 'José Cleilton', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/josecleiton.jpeg' },
   { name: 'Murilo Levi', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/murilolevi.jpeg' },
+  { name: 'Luciano Mota ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/luciano_mota16/', linkedin: '#', photo: 'public/luciano.jpeg' },
   { name: 'Cristiano Negreiros ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/cristianonegreiros7', linkedin: '#', photo: 'public/cristiano negreiros.jpeg' },
 ];
 

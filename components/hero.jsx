@@ -112,7 +112,7 @@ function Navbar({ scrolled }) {
     }}>
       <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-        <img src="uploads/pasted-1776710952173-0.png" alt="Manihot" style={{ height: 42, width: 'auto' }} />
+        <img src="public/manihot.png" alt="Manihot" style={{ height: 46, width: 'auto' }} />
       </button>
       <div style={{ display: 'flex', gap: 2, alignItems: 'center' }} className="nav-desktop">
         {links.map((l, i) => (
@@ -186,7 +186,7 @@ function HeroSection() {
       <ParticleCanvas />
       <div style={{ position: 'relative', zIndex: 1, padding: '120px clamp(24px, 7vw, 110px) 80px', maxWidth: 1200, margin: '0 auto', width: '100%' }}>
         <div style={{ marginBottom: 36 }}>
-          <img src="uploads/pasted-1776710952173-0.png" alt="Manihot" style={{ height: 86, width: 'auto', filter: 'drop-shadow(0 4px 20px #00000055)' }} />
+          <img src="public/manihot.png" alt="Manihot" style={{ height: 86, width: 'auto', filter: 'drop-shadow(0 4px 20px #00000055)' }} />
         </div>
         <AccentBadge color={C.teal}>Biotecnologia Sustentável</AccentBadge>
         <h1 style={{

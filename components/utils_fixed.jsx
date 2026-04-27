@@ -342,3 +342,247 @@ function SolutionCalloutLight({ children }) {
   );
 }
 window.SolutionCalloutLight = SolutionCalloutLight;
+
+// ─── ModalPortal — renderiza no body, escapa de qualquer transform/overflow pai ─
+function ModalPortal({ children }) {
+  return ReactDOM.createPortal(children, document.body);
+}
+
+// ─── PragaModal ───────────────────────────────────────────────────────────────
+function PragaModal({ item, onClose }) {
+  React.useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
+
+  React.useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+
+  const agente = item.agente || item.cientifico;
+  const sintomасCompleto = item.sintomасCompleto || item.danoCompleto || item.sintomas || item.dano;
+  const solucaoCompleta = item.solucaoCompleta || item.controleCompleto || item.solucao || item.controle;
+
+  return (
+    <ModalPortal>
+      <div
+        onClick={onClose}
+        style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          zIndex: 9999,
+          background: 'rgba(10, 25, 15, 0.78)',
+          backdropFilter: 'blur(6px)',
+          WebkitBackdropFilter: 'blur(6px)',
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+          overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          padding: '24px 16px 40px',
+        }}
+      >
+        <div
+          onClick={e => e.stopPropagation()}
+          style={{
+            background: '#fff',
+            borderRadius: 20,
+            width: '100%',
+            maxWidth: 800,
+            boxShadow: '0 24px 80px rgba(0,0,0,0.45)',
+            position: 'relative',
+            marginTop: 'auto',
+            marginBottom: 'auto',
+            flexShrink: 0,
+          }}
+        >
+          {/* Botão fechar */}
+          <button
+            onClick={onClose}
+            aria-label="Fechar"
+            style={{
+              position: 'absolute',
+              top: 12, right: 12,
+              zIndex: 20,
+              width: 36, height: 36,
+              borderRadius: '50%',
+              border: 'none',
+              cursor: 'pointer',
+              background: 'rgba(10, 25, 15, 0.65)',
+              color: '#fff',
+              fontSize: 20,
+              fontWeight: 700,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+            }}
+          >×</button>
+
+          {/* Imagem com gradiente de transição */}
+          {item.imagem && (
+            <div style={{
+              width: '100%',
+              height: 'clamp(180px, 35vw, 260px)',
+              overflow: 'hidden',
+              borderRadius: '20px 20px 0 0',
+              position: 'relative',
+            }}>
+              <img
+                src={item.imagem}
+                alt={item.nome}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: 0, left: 0, right: 0,
+                height: 80,
+                background: 'linear-gradient(to bottom, transparent, #fff)',
+                pointerEvents: 'none',
+              }} />
+            </div>
+          )}
+
+          {/* Conteúdo */}
+          <div style={{ padding: 'clamp(20px, 4vw, 32px) clamp(20px, 4vw, 32px) 28px' }}>
+
+            <h3 style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(20px, 4vw, 26px)',
+              color: '#0F2D1A',
+              margin: '0 0 4px',
+              paddingRight: 32,
+            }}>{item.nome}</h3>
+
+            {agente && (
+              <p style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 13, color: '#4A6655',
+                fontStyle: 'italic', margin: '0 0 20px',
+              }}>{agente}</p>
+            )}
+
+            {/* Sintomas */}
+            <div style={{ marginBottom: 20 }}>
+              <div style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700, fontSize: 11,
+                color: '#0F2D1A', textTransform: 'uppercase',
+                letterSpacing: '0.1em', marginBottom: 8,
+              }}>Sintomas e Danos</div>
+              <p style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 'clamp(13px, 2.5vw, 15px)',
+                color: '#3D5449', lineHeight: 1.8, margin: 0,
+              }}>{sintomасCompleto}</p>
+            </div>
+
+            {/* Fase crítica */}
+            {item.fase && (
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                background: '#C9A84C18',
+                border: '1px solid #C9A84C55',
+                borderRadius: 20, padding: '5px 12px',
+                marginBottom: 20,
+              }}>
+                <span style={{ fontSize: 11 }}>⏱</span>
+                <span style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 12, fontWeight: 600, color: '#0F2D1A',
+                }}>{item.fase}</span>
+              </div>
+            )}
+
+            {/* Recomendação de aplicação */}
+            {item.aplicacao && (
+              <div style={{ marginBottom: 20 }}>
+                <div style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: 700, fontSize: 11,
+                  color: '#0F2D1A', textTransform: 'uppercase',
+                  letterSpacing: '0.1em', marginBottom: 8,
+                }}>Recomendação de Aplicação</div>
+                <div style={{
+                  background: '#F2EFE9', borderRadius: 12,
+                  padding: '14px 18px',
+                  display: 'flex', flexDirection: 'column', gap: 10,
+                }}>
+                  {item.aplicacao.diluicao && (
+                    <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                      <span style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontSize: 10, fontWeight: 700, color: '#0F2D1A',
+                        textTransform: 'uppercase', letterSpacing: '0.08em',
+                        background: '#C9A84C22', border: '1px solid #C9A84C44',
+                        borderRadius: 6, padding: '2px 7px',
+                        flexShrink: 0, marginTop: 2,
+                      }}>Diluição</span>
+                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: '#3D5449', margin: 0, lineHeight: 1.6 }}>
+                        {item.aplicacao.diluicao}
+                      </p>
+                    </div>
+                  )}
+                  {item.aplicacao.preparo && (
+                    <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                      <span style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontSize: 10, fontWeight: 700, color: '#0F2D1A',
+                        textTransform: 'uppercase', letterSpacing: '0.08em',
+                        background: '#C9A84C22', border: '1px solid #C9A84C44',
+                        borderRadius: 6, padding: '2px 7px',
+                        flexShrink: 0, marginTop: 2,
+                      }}>Preparo</span>
+                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: '#3D5449', margin: 0, lineHeight: 1.6 }}>
+                        {item.aplicacao.preparo}
+                      </p>
+                    </div>
+                  )}
+                  {item.aplicacao.tecnica && (
+                    <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                      <span style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontSize: 10, fontWeight: 700, color: '#0F2D1A',
+                        textTransform: 'uppercase', letterSpacing: '0.08em',
+                        background: '#C9A84C22', border: '1px solid #C9A84C44',
+                        borderRadius: 6, padding: '2px 7px',
+                        flexShrink: 0, marginTop: 2,
+                      }}>Técnica</span>
+                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: '#3D5449', margin: 0, lineHeight: 1.6 }}>
+                        {item.aplicacao.tecnica}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Solução Manihot — destaque máximo */}
+            <div style={{
+              background: '#0F2D1A',
+              borderRadius: 14, padding: '20px 22px',
+            }}>
+              <div style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700, fontSize: 11,
+                color: '#C9A84C', textTransform: 'uppercase',
+                letterSpacing: '0.12em', marginBottom: 10,
+              }}>Solução Manihot</div>
+              <p style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 'clamp(13px, 2.5vw, 15px)',
+                color: '#C8DDD2', lineHeight: 1.8, margin: 0,
+              }}>{solucaoCompleta}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </ModalPortal>
+  );
+}
+window.PragaModal = PragaModal;

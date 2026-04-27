@@ -18,18 +18,10 @@ function Mandiocultura() {
             desc="Adapta-se a solos pobres e climas secos com baixo consumo de insumos, sendo candidata à restauração produtiva de áreas degradadas." />
         </div>
 
-        {/* Placeholder botânico */}
         <Reveal>
-          <div style={{
-            borderRadius: 20, height: 280, background: `repeating-linear-gradient(135deg, ${C.cream2} 0px, ${C.cream2} 20px, #fff 20px, #fff 40px)`,
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10,
-            border: `1.5px dashed ${C.gold}44`, position: 'relative', overflow: 'hidden',
-          }}>
-            <div style={{ opacity: 0.2 }}>{BotIcons.leaf(C.green, 80)}</div>
-            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: C.textMid, textAlign: 'center', padding: '0 40px' }}>
-              <strong>[ Ilustração botânica ]</strong><br/>
-              Linha-art vetorial: campo de mandioca em estágio de colheita — raízes expostas, hastes, folhas palmadas — estilo científico, traço fino ouro.
-            </div>
+          <div style={{ borderRadius: 20, overflow: 'hidden', height: 280 }}>
+            <img src="public/campo-colheita.jpg" alt="Campo de mandioca"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
           </div>
         </Reveal>
       </div>
@@ -67,16 +59,9 @@ function Manipueira() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div style={{
-              borderRadius: 20, height: 340, background: '#163020',
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12,
-              border: `1.5px dashed ${C.teal}33`, position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{ opacity: 0.18 }}>{BotIcons.circuit(C.teal, 100)}</div>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: C.textDim, textAlign: 'center', padding: '0 32px', position: 'absolute', bottom: 24 }}>
-                <strong style={{ color: C.teal + 'aa' }}>[ Ilustração técnica ]</strong><br/>
-                Diagrama de processo: mandioca → prensa → manipueira → separação de compostos. Traço fino sobre fundo escuro, estilo infográfico científico.
-              </div>
+            <div style={{ borderRadius: 20, overflow: 'hidden', background: '#163020', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src="public/organograma-processo-mandioca.jpeg" alt="Organograma processo da mandioca"
+                style={{ width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
             </div>
           </Reveal>
         </div>
