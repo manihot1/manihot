@@ -1,5 +1,8 @@
+import React from 'react'
+import { C, Reveal, WaveDown, SectionLabel, H2, Lead, BotCard, TechCard, SolutionCalloutLight, BotIcons, AccentBadge, CircuitBg } from './utils_fixed.jsx'
+
 // ─── Mandiocultura (light) ────────────────────────────────────────────────────
-function Mandiocultura() {
+export function Mandiocultura() {
   return (
     <section id="mandiocultura" data-screen-label="02 Mandiocultura" style={{ background: C.cream, padding: '80px 0 0', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 6vw, 100px)' }}>
@@ -20,7 +23,7 @@ function Mandiocultura() {
 
         <Reveal>
           <div style={{ borderRadius: 20, overflow: 'hidden', height: 280 }}>
-            <img src="public/campo-colheita.jpg" alt="Campo de mandioca"
+            <img src="/campo-colheita.jpg" alt="Campo de mandioca"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
           </div>
         </Reveal>
@@ -29,7 +32,6 @@ function Mandiocultura() {
     </section>
   );
 }
-window.Mandiocultura = Mandiocultura;
 
 // ─── Manipueira (dark) ────────────────────────────────────────────────────────
 const manipComp = [
@@ -41,7 +43,7 @@ const manipComp = [
   { icon: BotIcons.circuit(C.gold, 38), name: 'Compostos Fenólicos', desc: 'Moléculas com ação antifúngica e bacteriostática, ativas contra patógenos do solo sem agressão à microbiota benéfica.', opp: 'Fungicida biológico sistêmico.' },
 ];
 
-function Manipueira() {
+export function Manipueira() {
   return (
     <section id="manipueira" data-screen-label="03 Manipueira" style={{ background: C.dark, padding: 0, overflow: 'hidden' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px clamp(24px, 6vw, 100px) 0', position: 'relative' }}>
@@ -60,7 +62,7 @@ function Manipueira() {
 
           <Reveal delay={0.1}>
             <div style={{ borderRadius: 20, overflow: 'hidden', background: '#163020', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img src="public/organograma-processo-mandioca.jpeg" alt="Organograma processo da mandioca"
+              <img src="/organograma-processo-mandioca.jpeg" alt="Organograma processo da mandioca"
                 style={{ width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
             </div>
           </Reveal>
@@ -88,4 +90,3 @@ function Manipueira() {
     </section>
   );
 }
-window.Manipueira = Manipueira;

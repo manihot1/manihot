@@ -1,26 +1,26 @@
+import React from 'react'
+import { createPortal } from 'react-dom'
+
 // ─── Design tokens ────────────────────────────────────────────────────────────
-const C = {
-  dark: '#0F2D1A',   // deep logo green — primary dark bg
-  dark2: '#122618',   // slightly lighter dark green
-  dark3: '#163020',   // card dark bg — green tinted
-  cream: '#F2EFE9',   // warm off-white from logo bg
-  cream2: '#E8E4DC',   // slightly deeper cream
-  gold: '#C9A84C',   // primary accent — logo gold
-  teal: '#3ABDB5',   // secondary accent — DNA/insect teal
-  green: '#4A7C59',   // mid green — botanical accents
-  leaf: '#2E6B3E',   // leaf green for textures
-  textDark: '#1A2D20',   // body text on light — green-tinted dark
-  textMid: '#4A6655',   // secondary text on light
-  textLight: '#C8DDD2',  // body text on dark
-  textDim: '#6A9478',   // secondary text on dark — green-tinted
+export const C = {
+  dark: '#0F2D1A',
+  dark2: '#122618',
+  dark3: '#163020',
+  cream: '#F2EFE9',
+  cream2: '#E8E4DC',
+  gold: '#C9A84C',
+  teal: '#3ABDB5',
+  green: '#4A7C59',
+  leaf: '#2E6B3E',
+  textDark: '#1A2D20',
+  textMid: '#4A6655',
+  textLight: '#C8DDD2',
+  textDim: '#6A9478',
   white: '#F2EFE9',
 };
 
-// Expose for all child scripts
-window.C = C;
-
 // ─── Scroll-reveal hook ───────────────────────────────────────────────────────
-function useReveal(threshold = 0.12) {
+export function useReveal(threshold = 0.12) {
   const ref = React.useRef(null);
   const [visible, setVisible] = React.useState(false);
   React.useEffect(() => {
@@ -35,10 +35,9 @@ function useReveal(threshold = 0.12) {
   }, []);
   return [ref, visible];
 }
-window.useReveal = useReveal;
 
 // ─── Reveal wrapper ───────────────────────────────────────────────────────────
-function Reveal({ children, delay = 0, style = {} }) {
+export function Reveal({ children, delay = 0, style = {} }) {
   const [ref, vis] = useReveal();
   return (
     <div ref={ref} style={{
@@ -52,10 +51,9 @@ function Reveal({ children, delay = 0, style = {} }) {
     }}>{children}</div>
   );
 }
-window.Reveal = Reveal;
 
 // ─── Wave dividers ────────────────────────────────────────────────────────────
-function WaveDown({ from = 'transparent', to = '#fff' }) {
+export function WaveDown({ from = 'transparent', to = '#fff' }) {
   return (
     <div style={{
       lineHeight: 0,
@@ -72,7 +70,8 @@ function WaveDown({ from = 'transparent', to = '#fff' }) {
     </div>
   );
 }
-function WaveUp({ from = 'transparent', to = '#fff' }) {
+
+export function WaveUp({ from = 'transparent', to = '#fff' }) {
   return (
     <div style={{
       lineHeight: 0,
@@ -89,11 +88,9 @@ function WaveUp({ from = 'transparent', to = '#fff' }) {
     </div>
   );
 }
-window.WaveDown = WaveDown;
-window.WaveUp = WaveUp;
 
-// ─── Botanical SVG icons (line-art, thin stroke, accent color) ────────────────
-const BotIcons = {
+// ─── Botanical SVG icons ──────────────────────────────────────────────────────
+export const BotIcons = {
   leaf: (color = C.gold, size = 48) => (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
       <path d="M8 40 C8 40 10 20 24 12 C38 4 42 8 42 8 C42 8 40 28 26 36 C14 43 8 40 8 40Z" stroke={color} strokeWidth="1.5" fill="none" />
@@ -170,26 +167,21 @@ const BotIcons = {
     </svg>
   ),
 };
-window.BotIcons = BotIcons;
 
-// ─── Leaf vein + organic circuit texture (for dark green sections) ─────────────
-function LeafTexture({ opacity = 0.06 }) {
+// ─── Leaf vein texture ────────────────────────────────────────────────────────
+export function LeafTexture({ opacity = 0.06 }) {
   return (
     <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', opacity }} viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
       <defs>
         <pattern id="leafvein" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-          {/* Leaf vein — central rib */}
           <path d="M10 100 C30 70 50 30 60 10" stroke="#4A7C59" strokeWidth="1" fill="none" opacity="0.9" />
-          {/* Secondary veins */}
           <path d="M25 80 C35 72 45 65 55 60" stroke="#4A7C59" strokeWidth="0.6" fill="none" opacity="0.7" />
           <path d="M35 65 C43 58 52 52 62 48" stroke="#4A7C59" strokeWidth="0.6" fill="none" opacity="0.6" />
           <path d="M42 52 C50 46 58 41 68 38" stroke="#4A7C59" strokeWidth="0.5" fill="none" opacity="0.5" />
           <path d="M48 40 C55 35 62 31 72 28" stroke="#4A7C59" strokeWidth="0.4" fill="none" opacity="0.4" />
-          {/* Circuit node */}
           <circle cx="90" cy="30" r="2" fill="#C9A84C" opacity="0.5" />
           <path d="M80 30 L90 30 L90 50 L100 50" stroke="#C9A84C" strokeWidth="0.7" fill="none" opacity="0.4" />
           <circle cx="100" cy="50" r="1.5" fill="#3ABDB5" opacity="0.5" />
-          {/* Soil dots */}
           <circle cx="20" cy="110" r="1" fill="#4A7C59" opacity="0.3" />
           <circle cx="40" cy="108" r="0.8" fill="#4A7C59" opacity="0.2" />
           <circle cx="60" cy="112" r="1.2" fill="#4A7C59" opacity="0.25" />
@@ -199,12 +191,11 @@ function LeafTexture({ opacity = 0.06 }) {
     </svg>
   );
 }
-window.LeafTexture = LeafTexture;
-// keep old name for compatibility
-window.CircuitBg = LeafTexture;
+
+export const CircuitBg = LeafTexture;
 
 // ─── Shared UI pieces ─────────────────────────────────────────────────────────
-function AccentBadge({ children, color = C.gold }) {
+export function AccentBadge({ children, color = C.gold }) {
   return (
     <span style={{
       display: 'inline-block',
@@ -216,18 +207,16 @@ function AccentBadge({ children, color = C.gold }) {
     }}>{children}</span>
   );
 }
-window.AccentBadge = AccentBadge;
 
-function SectionLabel({ children, light = false }) {
+export function SectionLabel({ children, light = false }) {
   return (
     <div style={{ marginBottom: 14 }}>
       <AccentBadge color={light ? C.gold : C.teal}>{children}</AccentBadge>
     </div>
   );
 }
-window.SectionLabel = SectionLabel;
 
-function H2({ children, light = false, style = {} }) {
+export function H2({ children, light = false, style = {} }) {
   return (
     <h2 style={{
       fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
@@ -237,9 +226,8 @@ function H2({ children, light = false, style = {} }) {
     }}>{children}</h2>
   );
 }
-window.H2 = H2;
 
-function Lead({ children, light = false, style = {} }) {
+export function Lead({ children, light = false, style = {} }) {
   return (
     <p style={{
       fontFamily: "'Space Grotesk', sans-serif", fontWeight: 400,
@@ -249,10 +237,8 @@ function Lead({ children, light = false, style = {} }) {
     }}>{children}</p>
   );
 }
-window.Lead = Lead;
 
-// Card for light sections
-function BotCard({ icon, title, desc, solution, delay = 0 }) {
+export function BotCard({ icon, title, desc, solution, delay = 0 }) {
   return (
     <Reveal delay={delay}>
       <div style={{
@@ -276,10 +262,8 @@ function BotCard({ icon, title, desc, solution, delay = 0 }) {
     </Reveal>
   );
 }
-window.BotCard = BotCard;
 
-// Card for dark sections
-function TechCard({ icon, title, desc, solution, accent = C.gold, delay = 0 }) {
+export function TechCard({ icon, title, desc, solution, accent = C.gold, delay = 0 }) {
   return (
     <Reveal delay={delay}>
       <div style={{
@@ -302,10 +286,8 @@ function TechCard({ icon, title, desc, solution, accent = C.gold, delay = 0 }) {
     </Reveal>
   );
 }
-window.TechCard = TechCard;
 
-// Solution callout
-function SolutionCallout({ children }) {
+export function SolutionCallout({ children }) {
   return (
     <div style={{
       background: `linear-gradient(135deg, ${C.gold}12, ${C.teal}08)`,
@@ -322,9 +304,8 @@ function SolutionCallout({ children }) {
     </div>
   );
 }
-window.SolutionCallout = SolutionCallout;
 
-function SolutionCalloutLight({ children }) {
+export function SolutionCalloutLight({ children }) {
   return (
     <div style={{
       background: `${C.gold}10`,
@@ -341,15 +322,14 @@ function SolutionCalloutLight({ children }) {
     </div>
   );
 }
-window.SolutionCalloutLight = SolutionCalloutLight;
 
-// ─── ModalPortal — renderiza no body, escapa de qualquer transform/overflow pai ─
-function ModalPortal({ children }) {
-  return ReactDOM.createPortal(children, document.body);
+// ─── ModalPortal ──────────────────────────────────────────────────────────────
+export function ModalPortal({ children }) {
+  return createPortal(children, document.body);
 }
 
 // ─── PragaModal ───────────────────────────────────────────────────────────────
-function PragaModal({ item, onClose }) {
+export function PragaModal({ item, onClose }) {
   React.useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', handler);
@@ -399,7 +379,6 @@ function PragaModal({ item, onClose }) {
             flexShrink: 0,
           }}
         >
-          {/* Botão fechar */}
           <button
             onClick={onClose}
             aria-label="Fechar"
@@ -422,7 +401,6 @@ function PragaModal({ item, onClose }) {
             }}
           >×</button>
 
-          {/* Imagem com gradiente de transição */}
           {item.imagem && (
             <div style={{
               width: '100%',
@@ -446,9 +424,7 @@ function PragaModal({ item, onClose }) {
             </div>
           )}
 
-          {/* Conteúdo */}
           <div style={{ padding: 'clamp(20px, 4vw, 32px) clamp(20px, 4vw, 32px) 28px' }}>
-
             <h3 style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 700,
@@ -466,7 +442,6 @@ function PragaModal({ item, onClose }) {
               }}>{agente}</p>
             )}
 
-            {/* Sintomas */}
             <div style={{ marginBottom: 20 }}>
               <div style={{
                 fontFamily: "'Space Grotesk', sans-serif",
@@ -481,7 +456,6 @@ function PragaModal({ item, onClose }) {
               }}>{sintomасCompleto}</p>
             </div>
 
-            {/* Fase crítica */}
             {item.fase && (
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -498,7 +472,6 @@ function PragaModal({ item, onClose }) {
               </div>
             )}
 
-            {/* Recomendação de aplicação */}
             {item.aplicacao && (
               <div style={{ marginBottom: 20 }}>
                 <div style={{
@@ -561,7 +534,6 @@ function PragaModal({ item, onClose }) {
               </div>
             )}
 
-            {/* Solução Manihot — destaque máximo */}
             <div style={{
               background: '#0F2D1A',
               borderRadius: 14, padding: '20px 22px',
@@ -578,11 +550,9 @@ function PragaModal({ item, onClose }) {
                 color: '#C8DDD2', lineHeight: 1.8, margin: 0,
               }}>{solucaoCompleta}</p>
             </div>
-
           </div>
         </div>
       </div>
     </ModalPortal>
   );
 }
-window.PragaModal = PragaModal;

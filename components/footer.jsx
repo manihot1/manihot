@@ -1,5 +1,7 @@
-// ─── Footer ───────────────────────────────────────────────────────────────────
+import React from 'react'
+import { C, WaveUp, AccentBadge, LeafTexture } from './utils_fixed.jsx'
 
+// ─── Footer ───────────────────────────────────────────────────────────────────
 
 const IconInstagramFooter = ({ size = 16, color = C.gold }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -17,7 +19,7 @@ const IconLinkedinFooter = ({ size = 16, color = C.teal }) => (
   </svg>
 );
 
-function Footer() {
+export function Footer() {
   const scrollTo = id => {
     const el = document.getElementById(id);
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 68, behavior: 'smooth' });
@@ -72,13 +74,12 @@ function Footer() {
             gap: 'clamp(32px, 4vw, 64px)',
             marginBottom: 56,
           }}>
-            {/* Brand column */}
             <div>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, marginBottom: 20, display: 'block' }}
               >
-                <img src="public/manihot.png" alt="Manihot" style={{ height: 75, width: 'auto' }} />
+                <img src="/manihot.png" alt="Manihot" style={{ height: 75, width: 'auto' }} />
               </button>
 
               <p style={{
@@ -107,7 +108,6 @@ function Footer() {
               </div>
             </div>
 
-            {/* Nav groups */}
             {navGroups.map(group => (
               <div key={group.label}>
                 <div style={{
@@ -138,7 +138,6 @@ function Footer() {
             ))}
           </div>
 
-          {/* ── Divider + copyright ── */}
           <div style={{
             borderTop: `1px solid ${C.gold}18`,
             padding: '24px 0 28px',
@@ -179,4 +178,3 @@ function Footer() {
     </>
   );
 }
-window.Footer = Footer;

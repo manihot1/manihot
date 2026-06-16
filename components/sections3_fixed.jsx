@@ -1,9 +1,12 @@
+import React from 'react'
+import { C, Reveal, WaveDown, SectionLabel, H2, Lead, AccentBadge, BotIcons, PragaModal, CircuitBg } from './utils_fixed.jsx'
+
 // ─── Fitopragas (light) ───────────────────────────────────────────────────────
 const pragas = [
   {
     nome: 'Ácaro-verde',
     cientifico: 'Mononychellus tanajoa',
-    imagem: 'public/Mononychellus.jpg',
+    imagem: '/Mononychellus.jpg',
     icone: BotIcons.mite(C.gold, 44),
     dano: 'Raspagem foliar causando bronzeamento, enrolamento e queda das folhas. Em infestações severas, destrói 80% da copa.',
     danoCompleto: 'O ácaro-verde provoca raspagem intensa da superfície foliar, causando bronzeamento característico, enrolamento e queda progressiva das folhas. Em infestações severas — típicas do período seco — pode destruir até 80% da copa em poucas semanas, comprometendo gravemente a fotossíntese e o enchimento das raízes. As folhas afetadas apresentam aspecto coriáceo, deformações nas bordas e coloração verde-clara a amarelada entre as nervuras.',
@@ -19,7 +22,7 @@ const pragas = [
   {
     nome: 'Mosca-branca',
     cientifico: 'Bemisia tabaci / Aleurothrixus aepim',
-    imagem: 'public/mosca-branca.jpg',
+    imagem: '/mosca-branca.jpg',
     icone: BotIcons.bug(C.teal, 44),
     dano: 'Sucção de seiva e transmissão de vírus (CBSD). Fumagina secundária compromete fotossíntese e qualidade visual.',
     danoCompleto: 'A mosca-branca causa dano duplo: a sucção direta de seiva enfraquece a planta, e sua saliva transmite vírus devastadores como o CBSD. A fumagina que cresce sobre a substância excretada pelos insetos cobre as folhas, bloqueando luz e reduzindo a fotossíntese. Em infestações severas, a planta apresenta clorose generalizada, queda de folhas e queda drástica de produção.',
@@ -35,7 +38,7 @@ const pragas = [
   {
     nome: 'Tripes',
     cientifico: 'Scirtothrips manihoti / Frankliniella williamsi',
-    imagem: 'public/Scirtothrips-manihoti.jpeg',
+    imagem: '/Scirtothrips-manihoti.jpeg',
     icone: BotIcons.mite(C.green, 44),
     dano: 'Raspagem de brotações novas causando encarquilhamento, deformação dos pecíolos e redução do vigor das plantas jovens.',
     danoCompleto: 'O tripes ataca preferencialmente as brotações novas e tenras da mandioca, raspando tecidos e sugando o conteúdo celular. O resultado é encarquilhamento das folhas jovens, deformação dos pecíolos e redução severa do vigor nas primeiras semanas. O ataque precoce pode comprometer a arquitetura da planta e reduzir o rendimento final das raízes.',
@@ -51,7 +54,7 @@ const pragas = [
   {
     nome: 'Mandarová',
     cientifico: 'Erinnyis ello',
-    imagem: 'public/mandarova.jpeg',
+    imagem: '/mandarova.jpeg',
     icone: BotIcons.bug(C.gold, 44),
     dano: 'Lagartas que desfolham completamente a planta em poucos dias. Uma única lagarta consome várias folhas por dia nas fases tardias.',
     danoCompleto: 'O mandarová é a principal praga da mandioca no Brasil, capaz de causar desfolha total em poucos dias. No 5° instar — fase de máxima voracidade — uma única lagarta consome várias folhas por dia. Os ovos são depositados na face inferior das folhas, e a fase larval dura 12 a 15 dias passando por 5 estágios. A desfolha severa reduz drasticamente a produção, pois a planta perde fotossíntese no período de enchimento das raízes. Infestações surgem de forma súbita e exigem monitoramento constante.',
@@ -67,7 +70,7 @@ const pragas = [
   {
     nome: 'Cochonilhas',
     cientifico: 'Diversas espécies (Phenacoccus, Dysmicoccus)',
-    imagem: 'public/cochonilhas.jpeg',
+    imagem: '/cochonilhas.jpeg',
     icone: BotIcons.bug(C.teal, 44),
     dano: 'Colônias densas cobrem o caule e sugam a seiva, causando amarelecimento foliar e comprometendo a qualidade das manivas.',
     danoCompleto: 'Colônias de aspecto escamoso e esbranquiçado fixam-se ao caule e sugam continuamente a seiva elaborada. A sucção constante de nutrientes resulta em amarelecimento, queima das folhas e brotamento excessivo lateral como resposta fisiológica. A haste original torna-se frágil e as manivas perdem qualidade para o plantio seguinte. Em infestações severas no período seco, o ataque pode levar à morte da planta.',
@@ -83,7 +86,7 @@ const pragas = [
   {
     nome: 'Broca-das-Hastes',
     cientifico: 'Coelosternus spp. (larvas de besouro)',
-    imagem: 'public/broca-das-hastes.jpeg',
+    imagem: '/broca-das-hastes.jpeg',
     icone: BotIcons.bug(C.gold, 44),
     dano: 'Larvas constroem galerias internas no caule, interrompendo o fluxo de seiva e tornando a haste quebradiça.',
     danoCompleto: 'O inseto deposita ovos no interior do caule. As larvas constroem galerias que destroem os tecidos vasculares, acumulando serragem nos pontos de entrada. Esse dano interrompe o fluxo de seiva, causando amarelecimento e queima das folhas no ápice. Como resposta, a planta estimula brotamento excessivo lateral, mas esses brotos crescem debilitados. A haste principal torna-se quebradiça, comprometendo gravemente as manivas e o rendimento das raízes.',
@@ -99,7 +102,7 @@ const pragas = [
   {
     nome: 'Mosca-do-Broto',
     cientifico: 'Silba pendula',
-    imagem: 'public/mosca-do-broto.jpeg',
+    imagem: '/mosca-do-broto.jpeg',
     icone: BotIcons.mite(C.teal, 44),
     dano: 'Larvas destroem o ponto de crescimento apical, causando "ponteira seca" e brotamento lateral excessivo.',
     danoCompleto: 'A mosca deposita ovos nas gemas terminais. As larvas penetram no tecido tenro e destroem o ponto de crescimento, interrompendo o desenvolvimento vertical. O ataque causa morte do broto principal e "ponteira seca" característica. Com a perda da dominância apical, a planta reage com brotamento lateral excessivo — hastes finas que reduzem a qualidade das manivas e desviam energia do enchimento das raízes.',
@@ -115,7 +118,7 @@ const pragas = [
   {
     nome: 'Superbrotamento',
     cientifico: 'Candidatus Phytoplasma',
-    imagem: 'public/superbrotamento.jpeg',
+    imagem: '/superbrotamento.jpeg',
     icone: BotIcons.leaf(C.gold, 44),
     dano: 'Fitoplasma no floema provoca brotamento desordenado tipo "vassoura-de-bruxa" e raízes sem valor comercial.',
     danoCompleto: 'O superbrotamento (vassoura-de-bruxa) é provocado por um fitoplasma que vive no floema, obstruindo a seiva e desequilibrando os hormônios de crescimento. Os primeiros sinais são enfraquecimento da parte aérea, amarelecimento e queima das folhas. Com a perda da dominância apical, diversas gemas laterais despertam simultaneamente, criando ramos finos e aglomerados — o aspecto característico de vassoura. As raízes tornam-se finas, fibrosas e sem valor comercial.',
@@ -131,7 +134,7 @@ const pragas = [
   {
     nome: 'Formiga-cortadeira',
     cientifico: 'Atta spp. / Acromyrmex spp.',
-    imagem: 'public/formigas-cortadeiras.jpeg',
+    imagem: '/formigas-cortadeiras.jpeg',
     icone: BotIcons.bug(C.gold, 44),
     dano: 'Cortam e removem folhas para alimentar o fungo simbionte. Sem fotossíntese, a planta não produz amido e as raízes não se desenvolvem.',
     danoCompleto: 'As formigas-cortadeiras são pragas altamente destrutivas: cortam e removem as folhas da mandioca para servirem de substrato ao fungo do qual se alimentam, eliminando completamente a capacidade fotossintética da planta. Sem folhas, a planta não produz amido e as raízes não se desenvolvem. O ataque contínuo aos novos brotos esgota as reservas da mandioca, levando à morte por exaustão. Um formigueiro não controlado pode destruir plantações inteiras rapidamente, tornando a produção economicamente inviável.',
@@ -150,7 +153,7 @@ function PragaCard({ p, delay }) {
   const [aberto, setAberto] = React.useState(false);
   return (
     <Reveal delay={delay}>
-      {aberto && <window.PragaModal item={p} onClose={() => setAberto(false)} />}
+      {aberto && <PragaModal item={p} onClose={() => setAberto(false)} />}
       <div
         onClick={() => setAberto(true)}
         style={{
@@ -165,7 +168,6 @@ function PragaCard({ p, delay }) {
         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 16px 40px #1A1C1B12'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 20px #1A1C1B06'; }}
       >
-        {/* Badge */}
         <div style={{
           position: 'absolute', top: 12, right: 12, zIndex: 2,
           background: C.dark, color: C.cream,
@@ -175,7 +177,6 @@ function PragaCard({ p, delay }) {
           opacity: 0.88,
         }}>Ver mais</div>
 
-        {/* Imagem topo */}
         {p.imagem
           ? (
             <div
@@ -204,7 +205,6 @@ function PragaCard({ p, delay }) {
           )
         }
 
-        {/* Header */}
         <div style={{ padding: '14px 18px 10px', borderBottom: `1px solid ${C.cream2}` }}>
           <div style={{
             fontFamily: "'Space Grotesk', sans-serif",
@@ -218,9 +218,7 @@ function PragaCard({ p, delay }) {
           }}>{p.cientifico}</div>
         </div>
 
-        {/* Dano resumido */}
         <div style={{ padding: '12px 18px', flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {/* Fase crítica pill */}
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 5,
             background: C.gold + '14', border: `1px solid ${C.gold}44`,
@@ -239,7 +237,6 @@ function PragaCard({ p, delay }) {
           }}>{p.dano}</p>
         </div>
 
-        {/* CTA */}
         <div style={{ margin: '0 18px 18px' }}>
           <div style={{
             background: C.dark,
@@ -258,7 +255,7 @@ function PragaCard({ p, delay }) {
   );
 }
 
-function Fitopragas() {
+export function Fitopragas() {
   return (
     <section id="fitopragas" data-screen-label="06 Fitopragas" style={{ background: C.cream, padding: 0, overflow: 'hidden' }}>
       <div style={{ maxWidth: 1500, margin: '0 auto', padding: '80px clamp(16px, 2.5vw, 48px) 0' }}>
@@ -276,10 +273,9 @@ function Fitopragas() {
     </section>
   );
 }
-window.Fitopragas = Fitopragas;
 
 // ─── Aedes (dark) ─────────────────────────────────────────────────────────────
-function Aedes() {
+export function Aedes() {
   const teal = C.teal;
   const stats = [
     { n: '3.000', label: 'mortes/ano por dengue no Brasil' },
@@ -304,7 +300,6 @@ function Aedes() {
             <Lead light>O mesmo ácido cianídrico que torna a manipueira um passivo ambiental pode salvar vidas. Compostos bioativos isolados demonstram potente ação larvicida e ovicida contra o Aedes aegypti.</Lead>
           </Reveal>
 
-          {/* Stats */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {stats.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.1}>
@@ -320,7 +315,6 @@ function Aedes() {
           </div>
         </div>
 
-        {/* Ciclo infográfico */}
         <Reveal>
           <div style={{
             background: '#163020', borderRadius: 20, padding: '40px',
@@ -363,7 +357,6 @@ function Aedes() {
     </section>
   );
 }
-window.Aedes = Aedes;
 
 // ─── Agrotóxicos (dark) ───────────────────────────────────────────────────────
 const comparativo = [
@@ -375,7 +368,7 @@ const comparativo = [
   { aspecto: 'Custo ambiental', agro: 'Externalidades não contabilizadas', bio: 'Ciclo circular — resíduo vira solução' },
 ];
 
-function Agrotoxicos() {
+export function Agrotoxicos() {
   return (
     <section id="agrotoxicos" data-screen-label="08 Agrotoxicos" style={{ background: C.dark, padding: '0 clamp(24px, 6vw, 100px) 0' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 0 80px', position: 'relative' }}>
@@ -387,7 +380,6 @@ function Agrotoxicos() {
           <Lead light>O Brasil é o maior consumidor global de agrotóxicos. Cada litro aplicado deixa rastros no solo, na água, nos polinizadores e na saúde humana. Existe um caminho melhor.</Lead>
         </Reveal>
 
-        {/* Table */}
         <Reveal delay={0.1}>
           <div style={{
             background: '#163020', borderRadius: 20, overflow: 'hidden',
@@ -417,7 +409,6 @@ function Agrotoxicos() {
           </div>
         </Reveal>
 
-        {/* CTA */}
         <Reveal delay={0.1} style={{ position: 'relative' }}>
           <div style={{
             borderRadius: 24, padding: 'clamp(36px, 5vw, 64px)',
@@ -425,7 +416,6 @@ function Agrotoxicos() {
             background: `linear-gradient(135deg, ${'#163020'} 0%, #0C1F12 100%)`,
             border: `1px solid ${C.gold}22`,
           }}>
-            {/* Gold glow */}
             <div style={{
               position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
               width: 400, height: 200,
@@ -458,9 +448,3 @@ function Agrotoxicos() {
     </section>
   );
 }
-window.Agrotoxicos = Agrotoxicos;
-
-// sections3.jsx — Footer component removed (defined in footer.jsx)
-// Imagens disponíveis para seção de preparo/uso da manipueira:
-// public/manipuera-preparo.jpeg — processo de preparo/extração
-// public/mandioca-colhida.jpeg — resultado da produção / raízes colhidas
