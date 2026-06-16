@@ -1,13 +1,15 @@
+import React from 'react'
+import { C, Reveal, WaveUp, SectionLabel, H2, Lead, LeafTexture } from './utils_fixed.jsx'
+
 // ─── Team Carousel ────────────────────────────────────────────────────────────
 
 const teamMembers = [
-  { name: 'José Cleilton', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/josecleiton.jpeg' },
-  { name: 'Murilo Levi', role: 'Estudante', instagram: '#', linkedin: '#', photo: 'public/murilolevi.jpeg' },
-  { name: 'Luciano Mota ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/luciano_mota16/', linkedin: '#', photo: 'public/luciano.jpeg' },
-  { name: 'Cristiano Negreiros ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/cristianonegreiros7', linkedin: '#', photo: 'public/cristiano negreiros.jpeg' },
+  { name: 'José Cleilton', role: 'Estudante', instagram: '#', linkedin: '#', photo: '/josecleiton.jpeg' },
+  { name: 'Murilo Levi', role: 'Estudante', instagram: '#', linkedin: '#', photo: '/murilolevi.jpeg' },
+  { name: 'Luciano Mota ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/luciano_mota16/', linkedin: '#', photo: '/luciano.jpeg' },
+  { name: 'Cristiano Negreiros ', role: 'Estudante de Engenharia agronômica', instagram: 'https://www.instagram.com/cristianonegreiros7', linkedin: '#', photo: '/cristiano negreiros.jpeg' },
 ];
 
-// SVG icons for social
 const IconInstagram = ({ size = 18, color = '#C9A84C' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -24,11 +26,9 @@ const IconLinkedin = ({ size = 18, color = '#3ABDB5' }) => (
   </svg>
 );
 
-// Placeholder avatar — botanical/science themed initials
 function AvatarPlaceholder({ name, size = 120 }) {
   const initials = name.split(' ').slice(0, 2).map(w => w[0]).join('');
-  // Deterministic hue from name
-  const hue = name.charCodeAt(0) * 7 % 60 + 100; // 100–160 green range
+  const hue = name.charCodeAt(0) * 7 % 60 + 100;
   return (
     <div style={{
       width: size, height: size, borderRadius: '50%',
@@ -39,7 +39,6 @@ function AvatarPlaceholder({ name, size = 120 }) {
       fontSize: size * 0.32, color: C.gold, letterSpacing: 1, flexShrink: 0,
       position: 'relative', overflow: 'hidden',
     }}>
-      {/* Subtle leaf mark behind */}
       <svg style={{ position: 'absolute', inset: 0, opacity: 0.08 }} viewBox="0 0 120 120" fill="none">
         <path d="M20 100 C20 100 25 50 60 30 C95 10 105 20 105 20 C105 20 100 70 65 90 C32 108 20 100 20 100Z" fill="#4A7C59"/>
         <path d="M20 100 L60 55" stroke="#4A7C59" strokeWidth="2"/>
@@ -70,7 +69,6 @@ function MemberCard({ member }) {
       e.currentTarget.style.transform = '';
     }}
     >
-      {/* Photo or placeholder */}
       {member.photo
         ? <img src={member.photo} alt={member.name} style={{
             width: 96, height: 96, borderRadius: '50%', objectFit: 'cover',
@@ -79,7 +77,6 @@ function MemberCard({ member }) {
         : <AvatarPlaceholder name={member.name} size={96} />
       }
 
-      {/* Name & role */}
       <div style={{ textAlign: 'center' }}>
         <div style={{
           fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
@@ -91,7 +88,6 @@ function MemberCard({ member }) {
         }}>{member.role}</div>
       </div>
 
-      {/* Social icons */}
       <div style={{ display: 'flex', gap: 12, marginTop: 4 }}>
         {member.instagram && member.instagram !== '#' && (
           <a href={member.instagram} target="_blank" rel="noreferrer" style={{
@@ -126,12 +122,11 @@ function MemberCard({ member }) {
   );
 }
 
-function TeamCarousel() {
-  // Duplicate members enough times for seamless infinite scroll
+export function TeamCarousel() {
   const track = [...teamMembers, ...teamMembers, ...teamMembers];
   const [paused, setPaused] = React.useState(false);
 
-  const CARD_W = 220 + 20; // card width (220) + marginRight (20)
+  const CARD_W = 220 + 20;
   const trackWidth = teamMembers.length * CARD_W;
 
   return (
@@ -151,13 +146,11 @@ function TeamCarousel() {
           </Lead>
         </Reveal>
 
-        {/* Carousel track */}
         <div
           style={{ position: 'relative', overflow: 'hidden' }}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {/* Fade masks */}
           <div style={{
             position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, zIndex: 2,
             background: `linear-gradient(to right, ${C.dark}, transparent)`, pointerEvents: 'none',
@@ -190,5 +183,3 @@ function TeamCarousel() {
     </section>
   );
 }
-
-window.TeamCarousel = TeamCarousel;
