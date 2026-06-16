@@ -1,3 +1,12 @@
+import React from 'react'
+import { C } from './utils_fixed.jsx'
+import { Navbar, HeroSection } from './hero.jsx'
+import { Mandiocultura, Manipueira } from './sections1.jsx'
+import { Patologias, Deficiencias } from './sections2_fixed.jsx'
+import { Fitopragas, Aedes, Agrotoxicos } from './sections3_fixed.jsx'
+import { TeamCarousel } from './team.jsx'
+import { Footer } from './footer.jsx'
+
 // ─── Tweaks panel ─────────────────────────────────────────────────────────────
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accentGold": "#C9A84C",
@@ -56,7 +65,7 @@ function TweaksPanel({ tweaks, setTweaks, visible }) {
 }
 
 // ─── App ──────────────────────────────────────────────────────────────────────
-function App() {
+export default function App() {
   const [scrolled, setScrolled] = React.useState(false);
   const [tweaksVisible, setTweaksVisible] = React.useState(false);
   const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
@@ -77,7 +86,6 @@ function App() {
     return () => window.removeEventListener('message', onMsg);
   }, []);
 
-  // Apply tweaks globally
   React.useEffect(() => {
     Object.assign(C, {
       gold: tweaks.accentGold,
@@ -105,6 +113,3 @@ function App() {
     </>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
