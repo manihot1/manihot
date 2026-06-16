@@ -1,10 +1,13 @@
+import React from 'react'
+import { C, Reveal, WaveDown, SectionLabel, H2, Lead, BotCard, BotIcons, PragaModal } from './utils_fixed.jsx'
+
 // ─── Patologias (light) ───────────────────────────────────────────────────────
 const patologias = {
   fungicas: [
     {
       nome: 'Podridão Radicular',
       agente: 'Fusarium solani',
-      imagem: 'public/fungo-fusarium.jpeg',
+      imagem: '/fungo-fusarium.jpeg',
       icon: BotIcons.root(C.green, 36),
       sintomas: 'Apodrecimento severo das raízes com lesões marrom-escuras, murcha e amarelecimento foliar. Resultado: morte da planta e perda total da produção.',
       sintomасCompleto: 'O Fusarium penetra nas raízes causando lesões marrom-escuras e apodrecimento severo, impedindo a absorção de água e nutrientes. Na parte aérea, as folhas apresentam amarelecimento, murcha e, em casos graves, queda completa. A planta tenta reagir com brotamento excessivo próximo ao solo, mas esses ramos logo enfraquecem. O resultado é morte da planta e raízes com odor forte, inviáveis para comércio ou consumo. Especialmente agressivo em solos mal drenados.',
@@ -19,7 +22,7 @@ const patologias = {
     {
       nome: 'Antracnose',
       agente: 'Colletotrichum gloeosporioides',
-      imagem: 'public/antracnose.jpeg',
+      imagem: '/antracnose.jpeg',
       icon: BotIcons.leaf(C.green, 36),
       sintomas: 'Lesões necróticas escuras nos ramos e folhas, com desfolha precoce e cancros no caule que matam os ponteiros.',
       sintomасCompleto: 'A antracnose manifesta-se através de manchas escuras, necróticas (marrom a negras) e deprimidas nas folhas. As lesões são acompanhadas de desfolha precoce, deformação dos folíolos e podem evoluir para cancros nas hastes, causando morte dos ponteiros. O fungo é favorecido por alta umidade e temperaturas amenas. A desfolha repetida compromete gravemente a produção de raízes.',
@@ -34,7 +37,7 @@ const patologias = {
     {
       nome: 'Cercosporiose',
       agente: 'Cercospora henningsii',
-      imagem: 'public/mancha-parda.jpeg',
+      imagem: '/mancha-parda.jpeg',
       icon: BotIcons.leaf(C.gold, 36),
       sintomas: 'Manchas circulares marrons com halo amarelado em ambos os lados da folha. Doença foliar mais frequente na cultura.',
       sintomасCompleto: 'A Cercosporiose é a doença foliar mais frequente na mandioca. Caracteriza-se por manchas circulares marrons com halo amarelado em ambos os lados das folhas. Em infestações severas, as manchas coalescem, causando desfolha precoce e redução drástica da área fotossintética. É favorecida por alta umidade e temperatura amena.',
@@ -49,7 +52,7 @@ const patologias = {
     {
       nome: 'Mancha Branca',
       agente: 'Phaeoramularia manihotis',
-      imagem: 'public/mancha-branca.jpeg',
+      imagem: '/mancha-branca.jpeg',
       icon: BotIcons.leaf(C.teal, 36),
       sintomas: 'Manchas pequenas e claras com bordas bem definidas, predominando em regiões mais frias e plantios de altitude.',
       sintomасCompleto: 'A Mancha Branca provoca manchas pequenas e claras com bordas bem definidas nas folhas. Predomina em regiões de altitude ou climas frios. Menos agressiva que a Mancha Parda, afeta principalmente a qualidade visual das folhas e pode causar desfolha localizada em alta incidência. Mais comum em plantios com baixas temperaturas noturnas e alta umidade.',
@@ -64,7 +67,7 @@ const patologias = {
     {
       nome: 'Ferrugem',
       agente: 'Uromyces spp.',
-      imagem: 'public/ferrugem.jpeg',
+      imagem: '/ferrugem.jpeg',
       icon: BotIcons.leaf(C.gold, 36),
       sintomas: 'Pústulas alaranjadas ou marrons na face inferior das folhas e talos. Dispersão rápida pelo vento.',
       sintomасCompleto: 'A Ferrugem é identificada por pústulas alaranjadas ou marrons na parte inferior das folhas e nos talos. O patógeno dispersa-se por uredósporos carregados pelo vento, podendo comprometer lavouras inteiras em condições de alta umidade. As lesões reduzem a área fotossintética e, em ataques severos, causam desfolha precoce e enfraquecimento generalizado.',
@@ -81,7 +84,7 @@ const patologias = {
     {
       nome: 'Bacteriose',
       agente: 'Xanthomonas axonopodis pv. manihotis',
-      imagem: 'public/bacteriose.jpeg',
+      imagem: '/bacteriose.jpeg',
       icon: BotIcons.molecule(C.teal, 36),
       sintomas: 'Manchas de aspecto úmido nas folhas, murcha apical ("queima do broto"), exsudação de goma amarelada no caule.',
       sintomасCompleto: 'A Bacteriose é uma das mais graves da mandiocultura. Os sintomas começam com manchas de aspecto úmido ou de óleo nas folhas. Em seguida ocorre murcha dos ramos apicais ("queima do broto"), exsudação de goma amarelada no caule e, em condições úmidas, podridão do colo e morte da planta. A bactéria é disseminada pela chuva, vento e ferramentas contaminadas. O uso de material de plantio sadio é a principal medida preventiva.',
@@ -96,7 +99,7 @@ const patologias = {
     {
       nome: 'Murcha Bacteriana',
       agente: 'Ralstonia solanacearum',
-      imagem: 'public/solanacearum.jpg',
+      imagem: '/solanacearum.jpg',
       icon: BotIcons.dna(C.teal, 36),
       sintomas: 'Murcha súbita e irreversível sem amarelecimento prévio. Diagnóstico pelo "fio bacteriano" ao cortar o ramo.',
       sintomасCompleto: 'A Murcha Bacteriana provoca murcha súbita e irreversível, sem amarelecimento prévio. O diagnóstico em campo é feito pelo "fio bacteriano": ao cortar um ramo afetado e mergulhá-lo em água, observa-se exsudação de fio leitoso de bactérias. O escurecimento vascular interno confirma o diagnóstico. A bactéria sobrevive no solo por longos períodos e não há cura para plantas afetadas.',
@@ -111,7 +114,7 @@ const patologias = {
     {
       nome: 'Mosaico das Folhas',
       agente: 'Vírus do mosaico da mandioca (CMV)',
-      imagem: 'public/mosaico-das-folhas.jpeg',
+      imagem: '/mosaico-das-folhas.jpeg',
       icon: BotIcons.dna(C.teal, 36),
       sintomas: 'Deformações foliares com padrão mosqueado verde-claro/verde-escuro. Transmitido pela mosca-branca. Sem cura.',
       sintomасCompleto: 'O Mosaico provoca deformações foliares e padrão mosqueado verde-claro/verde-escuro característico. Reduz drasticamente a fotossíntese e o vigor da planta ao longo do ciclo. O vírus é transmitido de forma persistente pela mosca-branca (Bemisia tabaci). Não há cura para plantas já infectadas — o controle é exclusivamente pelo vetor.',
@@ -130,7 +133,7 @@ function PatologiaCard({ d, delay }) {
   const [aberto, setAberto] = React.useState(false);
   return (
     <Reveal delay={delay}>
-      {aberto && <window.PragaModal item={d} onClose={() => setAberto(false)} />}
+      {aberto && <PragaModal item={d} onClose={() => setAberto(false)} />}
       <div
         onClick={() => setAberto(true)}
         style={{
@@ -144,7 +147,6 @@ function PatologiaCard({ d, delay }) {
         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px #1A1C1B12'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 2px 20px #1A1C1B06'; }}
       >
-        {/* Badge */}
         <div style={{
           position: 'absolute', top: 12, right: 12, zIndex: 2,
           background: C.dark, color: C.cream,
@@ -152,7 +154,6 @@ function PatologiaCard({ d, delay }) {
           padding: '4px 10px', borderRadius: 20, opacity: 0.88,
         }}>Ver mais</div>
 
-        {/* Imagem topo */}
         {d.imagem
           ? (
             <div style={{ width: '100%', height: 140, overflow: 'hidden' }}>
@@ -166,7 +167,6 @@ function PatologiaCard({ d, delay }) {
           )
         }
 
-        {/* Conteudo */}
         <div style={{ padding: '18px 20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
           <h4 style={{
             fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
@@ -181,7 +181,6 @@ function PatologiaCard({ d, delay }) {
             color: C.textMid, lineHeight: 1.65, margin: '0 0 14px', flex: 1,
           }}>{d.sintomas}</p>
 
-          {/* CTA */}
           <div style={{
             background: C.dark, borderRadius: 10, padding: '8px 14px',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -198,7 +197,7 @@ function PatologiaCard({ d, delay }) {
   );
 }
 
-function Patologias() {
+export function Patologias() {
   const [tab, setTab] = React.useState('fungicas');
   const dados = patologias[tab];
   return (
@@ -210,7 +209,6 @@ function Patologias() {
           <Lead>Doenças que comprometem a produtividade — e como o Manihot oferece alternativas biológicas eficazes de controle.</Lead>
         </Reveal>
 
-        {/* Tabs */}
         <div style={{ display: 'flex', gap: 8, marginBottom: 40, borderBottom: `1.5px solid ${C.cream2}` }}>
           {[
             { key: 'fungicas', label: 'Fúngicas', icon: BotIcons.leaf(tab === 'fungicas' ? C.gold : C.textMid, 18) },
@@ -241,7 +239,6 @@ function Patologias() {
     </section>
   );
 }
-window.Patologias = Patologias;
 
 // ─── Deficiências (dark) ──────────────────────────────────────────────────────
 const nutrientes = [
@@ -253,11 +250,10 @@ const nutrientes = [
   { sym: 'Zn', nome: 'Zinco + Micro', cor: C.gold, sintoma: 'Folhas pequenas, entrenós curtos, folhas em roseta. Típico de solos tropicais lixiviados.', impacto: 'Comprometimento enzimático e hormonal generalizado.', solucao: 'Caldas bioativas enriquecidas com micronutrientes quelados da manipueira.' },
 ];
 
-function Deficiencias() {
+export function Deficiencias() {
   return (
     <section id="deficiencias" data-screen-label="05 Deficiencias" style={{ background: C.dark, padding: 0, overflow: 'hidden' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px clamp(24px, 6vw, 100px) 0', position: 'relative' }}>
-        <LeafTexture opacity={0.06} />
         <Reveal style={{ textAlign: 'center', position: 'relative' }}>
           <SectionLabel>Nutrição</SectionLabel>
           <H2 light style={{ textAlign: 'center' }}>Distúrbios Fisiológicos</H2>
@@ -309,4 +305,3 @@ function Deficiencias() {
     </section>
   );
 }
-window.Deficiencias = Deficiencias;
