@@ -1,3 +1,6 @@
+import React from 'react'
+import { C, Reveal, WaveDown, LeafTexture, AccentBadge } from './utils_fixed.jsx'
+
 // ─── Mandioca plant silhouette SVG ────────────────────────────────────────────
 function MandiocaSilhouette() {
   return (
@@ -81,7 +84,7 @@ function ParticleCanvas() {
 }
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
-function Navbar({ scrolled }) {
+export function Navbar({ scrolled }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const navRef = React.useRef(null);
   const links = ['Mandiocultura','Manipueira','Patologias','Deficiências','Fitopragas','Aedes','Agrotóxicos','Equipe'];
@@ -112,7 +115,7 @@ function Navbar({ scrolled }) {
     }}>
       <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-        <img src="public/manihot.png" alt="Manihot" style={{ height: 46, width: 'auto' }} />
+        <img src="/manihot.png" alt="Manihot" style={{ height: 46, width: 'auto' }} />
       </button>
       <div style={{ display: 'flex', gap: 2, alignItems: 'center' }} className="nav-desktop">
         {links.map((l, i) => (
@@ -159,10 +162,9 @@ function Navbar({ scrolled }) {
     </nav>
   );
 }
-window.Navbar = Navbar;
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
-function HeroSection() {
+export function HeroSection() {
   const scrollTo = id => {
     const el = document.getElementById(id);
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 68, behavior: 'smooth' });
@@ -186,7 +188,7 @@ function HeroSection() {
       <ParticleCanvas />
       <div style={{ position: 'relative', zIndex: 1, padding: '120px clamp(24px, 7vw, 110px) 80px', maxWidth: 1200, margin: '0 auto', width: '100%' }}>
         <div style={{ marginBottom: 36 }}>
-          <img src="public/manihot.png" alt="Manihot" style={{ height: 86, width: 'auto', filter: 'drop-shadow(0 4px 20px #00000055)' }} />
+          <img src="/manihot.png" alt="Manihot" style={{ height: 86, width: 'auto', filter: 'drop-shadow(0 4px 20px #00000055)' }} />
         </div>
         <AccentBadge color={C.teal}>Biotecnologia Sustentável</AccentBadge>
         <h1 style={{
@@ -238,4 +240,3 @@ function HeroSection() {
     </section>
   );
 }
-window.HeroSection = HeroSection;
